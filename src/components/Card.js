@@ -8,5 +8,11 @@ export default function Card({ card, onDelete, busy }) {
     - delete button calling onDelete with the card object
     - style as a card UI */
 
-  return <div></div>;
+  return <div>
+    <img src={card.image} alt={card.name} />
+    <h2>{card.name}</h2>
+    <p>ID: {card.id}</p>
+    <Link to={`/card/${card.id}/edit`}>Edit</Link>
+    <button onClick={() => onDelete(card)}>Delete</button>
+  </div>;
 }
