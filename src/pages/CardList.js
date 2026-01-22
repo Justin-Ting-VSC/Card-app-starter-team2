@@ -40,7 +40,7 @@ export default function CardList() {
 
   return (
     <main className="card-list">
-      <Navbar /> {/* Add Navbar here */}
+      <Navbar />
       
       {/* Loading and Error State */}
       {loading && <div className="loading">Loading...</div>}

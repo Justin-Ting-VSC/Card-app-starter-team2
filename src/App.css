@@ -117,7 +117,6 @@ body {
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
-
 /* card.js */
 
 /* Individual Card Styling */
@@ -201,7 +200,6 @@ body {
   cursor: not-allowed;
 }
 
-
 /* Nav bar */
 
 /* Navbar Styling */
@@ -248,5 +246,63 @@ body {
   color: #fff;
 }
 
+/* cardform */
+/* Form styling */
+.card-form {
+  background-color: #333;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+}
 
+.card-form .form-group {
+  margin-bottom: 20px;
+}
+
+.card-form label {
+  font-size: 1rem;
+  color: #fff;
+  margin-bottom: 5px;
+  display: block;
+}
+
+.card-form input {
+  width: 100%;
+  padding: 12px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #444;
+  color: #fff;
+}
+
+.card-form .error {
+  color: #f44336;
+  font-size: 1rem;
+  margin-bottom: 20px;
+}
+
+.card-form .submit-btn {
+  width: 100%;
+  padding: 12px;
+  background-color: #02c9c9;
+  color: #fff;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.card-form .submit-btn:hover {
+  background-color: #029999;
+}
+
+.card-form .submit-btn:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
 
