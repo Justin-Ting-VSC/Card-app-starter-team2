@@ -1,14 +1,9 @@
 import { useEffect, useState } from "react";
 import Card from "../components/Card";
 import { getCards, deleteCard } from "../services/api";
+import Navbar from "../components/Navbar"; // Import Navbar component
 
 export default function CardList() {
-  /* TODO: Complete the CardList page
-    - display a list of cards (use the Card component to display each card)
-    - delete button calling handleDelete with the card object
-    - handle loading, busy, and error states
-    - style as a grid UI */
-
   const [cards, setCards] = useState([]);
   const [loading, setLoading] = useState(true);
   const [busy, setBusy] = useState(false);
@@ -32,14 +27,10 @@ export default function CardList() {
   }, []);
 
   async function handleDelete(card) {
-
     setBusy(true);
     try {
-      // delete from backend
       const res = await deleteCard(card.id);
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
-
-      // remove from local state
       setCards((prevCards) => prevCards.filter((c) => c.id !== card.id));
     } catch (error) {
       console.error("Failed to delete card", error);
@@ -48,8 +39,15 @@ export default function CardList() {
   }
 
   return (
-    <main>
-      <div>
+    <main className="card-list">
+      <Navbar /> {/* Add Navbar here */}
+      
+      {/* Loading and Error State */}
+      {loading && <div className="loading">Loading...</div>}
+      {error && <div className="error">{error}</div>}
+
+      {/* Cards Grid */}
+      <div className="card-grid">
         {cards.map((card) => (
           <Card
             key={card.id}
