@@ -27,14 +27,21 @@ export default function CardList() {
   }, []);
 
   async function handleDelete(card) {
-    setBusy(true);
-    try {
-      const res = await deleteCard(card.id);
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      setCards((prevCards) => prevCards.filter((c) => c.id !== card.id));
-    } catch (error) {
-      console.error("Failed to delete card", error);
-      setError("Failed to delete card");
+    const confirmed = window.confirm(`Are you sure you want to delete ${card.card_name}?`);
+
+    if (confirmed) {
+      setBusy(true);  // Set the busy state to true during deletion
+      try {
+        // Call the deleteCard function to send the delete request to the backend
+        const res = await deleteCard(card.id);
+        alert(res.message);  // Show the success message from the backend
+        setCards((prevCards) => prevCards.filter((c) => c.id !== card.id));  // Remove the card from the local state
+      } catch (error) {
+        console.error("Failed to delete card", error);
+        setError("Failed to delete card");
+      } finally {
+        setBusy(false);  // Set busy to false after the process
+      }
     }
   }
 

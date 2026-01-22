@@ -56,7 +56,20 @@ export async function updateCard(id, card) {
   return res.json();
 }
 
-export function deleteCard(id) {
-  // TODO: implement DELETE /deletecard/:id
-  return fetch(`${API_URL}/deletecard/${id}`,{ method: "DELETE"});
+export async function deleteCard(id) {
+  try {
+    const res = await fetch(`${API_URL}/deletecard/${id}`, {
+      method: "DELETE",  // Use DELETE method
+    });
+
+    if (!res.ok) {
+      throw new Error("Failed to delete card");
+    }
+
+    // Return the success message or any data from the server
+    return res.json();  // This should return { message: "Card deleted successfully" }
+  } catch (error) {
+    console.error("Error deleting card:", error);
+    throw error;  // Re-throw the error for handling in the calling function
+  }
 }
