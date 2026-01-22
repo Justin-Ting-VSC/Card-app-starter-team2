@@ -39,8 +39,21 @@ export async function addCard(card) {
   return res.json();
 }
 
-export function updateCard(id, card) {
+export async function updateCard(id, card) {
   // TODO: implement PUT /updatecard/:id
+  const res = await fetch(`${API_URL}/updatecard/${id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(card),
+  });
+
+  if (!res.ok) {
+    throw new Error("Failed to update card");
+  }
+
+  return res.json();
 }
 
 export function deleteCard(id) {

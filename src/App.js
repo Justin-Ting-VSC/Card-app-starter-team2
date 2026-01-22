@@ -14,6 +14,7 @@ export default function App() {
         <Route path="/" element={<Home />} />
         <Route path="/cards" element={<CardList />} />
         <Route path ="/AddCard" element={<AddCard />} />
+        <Route path="/card/:id/edit" element={<EditCard />} />
       </Routes>
     </BrowserRouter>
   );

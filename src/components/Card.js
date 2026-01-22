@@ -5,7 +5,7 @@ export default function Card({ card, onDelete, busy, disabled }) {
     <div className="card">
       <img src={card.card_pic} alt={card.card_name} className="card-image" />
       <h2 className="card-name">{card.card_name}</h2>
-      <p className="card-id">ID: {card.id}</p>
+      <p></p>
       <div className="card-buttons">
         <Link to={`/card/${card.id}/edit`} className="edit-button">
           Edit
