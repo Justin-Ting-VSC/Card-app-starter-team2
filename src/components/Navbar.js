@@ -36,7 +36,8 @@ const token = localStorage.getItem("token");
           {token ? (
           <button onClick={handleLogout}>Logout</button>
         ) : (
-          <NavLink to="/login">Login</NavLink>
+          <NavLink to="/login"className={({ isActive }) => (isActive ? "navbar-link active" : "navbar-link")}
+          >Login</NavLink>
         )}
         </nav>
       </div>

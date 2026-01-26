@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNavigate} from "react-router-dom";
 import Card from "../components/Card";
 import { getCards, deleteCard } from "../services/api";
 import Navbar from "../components/Navbar"; // Import Navbar component
@@ -8,6 +9,7 @@ export default function CardList() {
   const [loading, setLoading] = useState(true);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
+  const navigate = useNavigate();
 
   async function load() {
     setLoading(true);
@@ -26,9 +28,9 @@ export default function CardList() {
     load();
   }, []);
 
+  
   async function handleDelete(card) {
     const confirmed = window.confirm(`Are you sure you want to delete ${card.card_name}?`);
-
     if (confirmed) {
       setBusy(true);  // Set the busy state to true during deletion
       try {
