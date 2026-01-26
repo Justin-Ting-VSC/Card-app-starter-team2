@@ -16,6 +16,19 @@ const API_URL = process.env.REACT_APP_API_URL;
  * - DELETE /deletecard/:id
  */
 
+function authHeader() {
+  const token = localStorage.getItem("token");
+  return token ? { Authorization: `Bearer ${token}` } : {};
+}
+
+export async function login(credentials) {
+  return fetch(`${API_URL}/login`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(credentials),
+  });
+}
+
 export async function getCards() {
   // GET /allcards (provided as reference)
   const res = await fetch(`${API_URL}/allcards`);
@@ -26,9 +39,7 @@ export async function getCards() {
 export async function addCard(card) {
   const res = await fetch(`${API_URL}/addcard`, {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
+    headers: { "Content-Type": "application/json", ...authHeader() },
     body: JSON.stringify(card),
   });
 
