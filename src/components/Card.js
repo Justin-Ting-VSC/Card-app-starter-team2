@@ -11,21 +11,27 @@ export default function Card({ card, onDelete, busy, disabled }) {
     }
   };
 
+  const token = localStorage.getItem("token");
+
   return (
     <div className="card">
       <img src={card.card_pic} alt={card.card_name} className="card-image" />
       <h2 className="card-name">{card.card_name}</h2>
       <div className="card-buttons">
-        <Link to={`/card/${card.id}/edit`} className="edit-button">
-          Edit
-        </Link>
-        <button
-          onClick={handleDelete}  // Calls the handleDelete function when clicked
-          className="delete-button"
-          disabled={disabled}  // Disable button during the deletion process
-        >
-          {busy ? "Deleting..." : "Delete"}  {/* Change button text based on busy state */}
-        </button>
+        {token && (
+          <Link to={`/card/${card.id}/edit`} className="edit-button">
+            Edit
+          </Link>
+        )}
+        {token && (
+          <button
+            onClick={handleDelete}  // Calls the handleDelete function when clicked
+            className="delete-button"
+            disabled={disabled}  // Disable button during the deletion process
+          >
+            {busy ? "Deleting..." : "Delete"}  {/* Change button text based on busy state */}
+          </button>
+        )}
       </div>
     </div>
   );

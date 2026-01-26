@@ -55,7 +55,7 @@ export async function updateCard(id, card) {
   const res = await fetch(`${API_URL}/updatecard/${id}`, {
     method: "PUT",
     headers: {
-      "Content-Type": "application/json",
+      "Content-Type": "application/json", ...authHeader()
     },
     body: JSON.stringify(card),
   });
@@ -71,6 +71,7 @@ export async function deleteCard(id) {
   try {
     const res = await fetch(`${API_URL}/deletecard/${id}`, {
       method: "DELETE",  // Use DELETE method
+      headers : {...authHeader()},
     });
 
     if (!res.ok) {
